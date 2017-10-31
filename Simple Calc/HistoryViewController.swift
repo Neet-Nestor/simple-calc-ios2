@@ -2,7 +2,7 @@
 //  HistoryViewController.swift
 //  Simple Calc
 //
-//  Created by Student User on 10/25/17.
+//  Created by Nestor Qin on 10/25/17.
 //  Copyright © 2017 Nestor Qin. All rights reserved.
 //
 
@@ -15,11 +15,6 @@ class HistoryViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var completeHistory:String = ""
-        for history in historys {
-            completeHistory += "\(history)\n"
-        }
-        NSLog(completeHistory)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "historyCell")
     }
     

@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Simple Calc
 //
-//  Created by Student User on 10/20/17.
+//  Created by Nestor Qin on 10/20/17.
 //  Copyright © 2017 Nestor Qin. All rights reserved.
 //
 
@@ -141,12 +141,6 @@ class ViewController: UIViewController {
                         numbers.append(Double(fullValue)!)
                         operation = sender.titleLabel!.text!
                         nextNum = true
-                        if (completeCalculation == "") {
-                            completeCalculation = "\(preNum) \(operation) \(fullValue)"
-                        } else {
-                            completeCalculation = "\(completeCalculation) \(operation) \(fullValue) "
-                        }
-                        NSLog(completeCalculation)
                     } else {
                         resultLabel.text = "Error"
                     }
@@ -317,12 +311,13 @@ class ViewController: UIViewController {
                 default:
                     resultLabel.text = "Error"
                 }
-                if (completeCalculation == "") {
-                    completeCalculation = "\(numString(Double(preNum)!)) \(operation) \(numString(Double(fullValue)!)) = \(numString(Double(resultLabel.text!)!))"
-                } else {
-                    completeCalculation = "\(completeCalculation) \(operation) \(numString(Double(fullValue)!)) = \(numString(Double(resultLabel.text!)!))"
+                if (numbers.count >= 2) {
+                    for index in 0...(numbers.count - 2) {
+                        completeCalculation += "\(numString(numbers[index])) \(operation) "
+                    }
+                    completeCalculation += "\(numString(numbers.last!)) = \(numString(Double(resultLabel.text!)!))"
+                    historys.append(completeCalculation)
                 }
-                historys.append(completeCalculation)
                 completeCalculation = ""
                 NSLog(completeCalculation)
                 numbers.removeAll()
